@@ -1,10 +1,10 @@
-# numeron
+# calcyon
 
 a little calculator that talks too much. you type some math, it gives you the answer, and then it won't shut up about what that answer actually is.
 
 made it for the hack club [calculate](https://calculate.hackclub.com/) thing.
 
-play with it here: https://downbeatfoil.github.io/numeron/
+play with it here: https://downbeatfoil.github.io/calcyon/
 
 ## the point
 

@@ -1,4 +1,4 @@
-// numeron. type math, get an answer, then get told a bunch of stuff about it.
+// calcyon. type math, get an answer, then get told a bunch of stuff about it.
 // the parser is a shunting-yard thing i wrote myself. no libraries.
 
 "use strict";
@@ -347,7 +347,7 @@ function drawGraph() {
 const exprEl = document.getElementById("expr");
 const resultEl = document.getElementById("result");
 const errEl = document.getElementById("err");
-let history = JSON.parse(localStorage.getItem("numeron.history") || "[]");
+let history = JSON.parse(localStorage.getItem("calcyon.history") || "[]");
 
 function show(which) {
   document.querySelectorAll(".pin").forEach((p) => p.classList.toggle("on", p.dataset.show === which));
@@ -415,7 +415,7 @@ document.querySelector(".switcher").addEventListener("click", (e) => {
 function pushHistory(src, res) {
   history.unshift({ src, res });
   history = history.slice(0, 40);
-  localStorage.setItem("numeron.history", JSON.stringify(history));
+  localStorage.setItem("calcyon.history", JSON.stringify(history));
   drawHistory();
 }
 function drawHistory() {
@@ -431,13 +431,13 @@ document.getElementById("history").addEventListener("click", (e) => {
   run();
 });
 document.getElementById("clearHist").addEventListener("click", () => {
-  history = []; localStorage.removeItem("numeron.history"); drawHistory();
+  history = []; localStorage.removeItem("calcyon.history"); drawHistory();
 });
 
 // ---- themes ----
 function setTheme(name) {
   document.body.dataset.theme = name;
-  localStorage.setItem("numeron.theme", name);
+  localStorage.setItem("calcyon.theme", name);
   document.querySelectorAll(".dot").forEach((d) => d.classList.toggle("active", d.dataset.theme === name));
   if (G.ctx) drawGraph();
 }
@@ -474,7 +474,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 // ---- boot ----
-setTheme(localStorage.getItem("numeron.theme") || "paper");
+setTheme(localStorage.getItem("calcyon.theme") || "paper");
 initGraph();
 drawHistory();
 exprEl.focus();
